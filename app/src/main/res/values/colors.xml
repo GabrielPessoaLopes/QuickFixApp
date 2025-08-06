@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Light mode colors -->
+    <color name="background">#F7F7F7</color>
+    <color name="primaryColor">#202020</color>
+    <color name="secondaryColor">#4D4D4D</color>
+    <color name="textColor">#202020</color>
+    <color name="itemColor">#FFFFFF</color>
+
+    <!-- Dark mode colors -->
+    <color name="darkBackground">#0D1117</color>
+    <color name="primaryColorDark">#13293D</color>
+    <color name="secondaryColorDark">#5D7C99</color>
+    <color name="textColorDark">#E6E6E6</color>
+    <color name="itemColorDark">#1C1F26</color>
+
+    <!-- Other colors -->
+    <color name="appColor">#105CA8</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="gray">#CFCFCF</color>
+    <color name="red">#D32F2F</color>
+    <color name="blue">#1976D2</color>
+    <color name="orange">#FF5722</color>
+</resources>

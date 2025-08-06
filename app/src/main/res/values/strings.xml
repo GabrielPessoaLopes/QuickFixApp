@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">QuickFixApp</string>
+
+    <string-array name="service_type">
+        <item>HVAC Technician</item>
+        <item>Babysitter</item>
+        <item>Carpenter</item>
+        <item>Cleaner</item>
+        <item>Contractor</item>
+        <item>Driver</item>
+        <item>Electrician</item>
+        <item>Gardener</item>
+        <item>Handyman</item>
+        <item>Locksmith</item>
+        <item>Mechanic</item>
+        <item>Mover</item>
+        <item>Painter</item>
+        <item>Plumber</item>
+        <item>Roofer</item>
+        <item>Teacher</item>
+        <item>Window Installer</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="service_status">
+        <item>accepted</item>
+        <item>started</item>
+        <item>finished</item>
+        <item>paid</item>
+        <item>closed</item>
+        <item>cancelled</item>
+    </string-array>
+
+
+</resources>

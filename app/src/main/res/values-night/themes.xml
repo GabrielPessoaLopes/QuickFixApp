@@ -1,0 +1,16 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.QuickFixApp" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Dark theme -->
+        <item name="background">@color/darkBackground</item>
+        <item name="colorPrimary">@color/primaryColorDark</item>
+        <item name="colorSecondary">@color/secondaryColorDark</item>
+        <item name="colorSurface">@color/itemColorDark</item>
+        <item name="android:textColorPrimary">@color/textColorDark</item>
+
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="colorOnSurface">@color/textColorDark</item>
+        <item name="colorOnBackground">@color/textColorDark</item>
+        <item name="colorOnPrimary">@color/white</item>
+    </style>
+</resources>

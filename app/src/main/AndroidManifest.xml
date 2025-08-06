@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.QuickFixApp"
+        tools:targetApi="31"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:usesCleartextTraffic="true">
+
+        <!-- Launcher (login) -->
+        <activity
+            android:name=".UserPackage.LoginActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Navbar activities -->
+        <activity android:name=".navBar.MainActivity" />
+        <activity android:name=".navBar.MyServicesAndRequestsActivity" />
+        <activity android:name=".navBar.SettingsActivity" />
+        <activity android:name=".navBar.ModifyRequestActivity" />
+
+        <!-- ProviderPackage activities -->
+        <activity android:name=".ProviderPackage.ProviderDetailsActivity" />
+        <activity android:name=".ProviderPackage.ModifyProviderRoleActivity" />
+        <activity android:name=".ProviderPackage.MyProviderRolesActivity" />
+
+        <!-- ServicePackage activities -->
+        <activity android:name=".ServicesPackage.ModifyServiceActivity" />
+        <activity android:name=".ServicesPackage.ServiceDetailsActivity" />
+
+        <!-- UserPackage activities -->
+        <activity android:name=".UserPackage.MyProfileActivity" />
+        <activity android:name=".UserPackage.AboutActivity" />
+        <activity android:name=".UserPackage.ModifyUserActivity" />
+
+    </application>
+</manifest>
