@@ -47,3 +47,13 @@ Service Provider
 ## License
 
 - Developed by Gabriel Lopes.
+
+## Upcoming Changes
+
+- UI and UX enhancements to improve layout consistency and visual structure
+- Refactoring of the API to ensure better organization, escalation and adherence to REST principles
+- Improved responsiveness and adaptability across different screen sizes
+- Support for localization to make the app accessible to a broader audience
+- Enhanced security measures, including refined token handling and validation
+
+
