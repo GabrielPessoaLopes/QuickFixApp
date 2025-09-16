@@ -1,0 +1,78 @@
+-- WARNING: This schema is for context only and is not meant to be run.
+-- Table order and constraints may not be valid for execution.
+
+CREATE TABLE public.pfp (
+  pfp_user_id integer NOT NULL,
+  user_pfp text,
+  CONSTRAINT pfp_pkey PRIMARY KEY (pfp_user_id),
+  CONSTRAINT pfp_pfp_user_id_fkey FOREIGN KEY (pfp_user_id) REFERENCES public.user(user_id)
+);
+CREATE TABLE public.pro_info (
+  pro_id integer NOT NULL,
+  pro_role character varying NOT NULL,
+  pro_description text,
+  pro_location character varying,
+  pro_price_per_hour real CHECK (pro_price_per_hour >= 0::double precision),
+  CONSTRAINT pro_info_pkey PRIMARY KEY (pro_id, pro_role),
+  CONSTRAINT pro_info_pro_id_fkey FOREIGN KEY (pro_id) REFERENCES public.user(user_id)
+);
+CREATE TABLE public.requested_providers (
+  request_id integer NOT NULL,
+  sp_id integer NOT NULL,
+  sp_status text NOT NULL CHECK (sp_status = ANY (ARRAY['pending'::text, 'accepted'::text, 'denied'::text])),
+  id integer NOT NULL DEFAULT nextval('requested_providers_id_seq'::regclass),
+  created_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT requested_providers_pkey PRIMARY KEY (id),
+  CONSTRAINT requested_providers_sp_id_fkey FOREIGN KEY (sp_id) REFERENCES public.user(user_id),
+  CONSTRAINT requested_providers_request_id_fkey FOREIGN KEY (request_id) REFERENCES public.service_request(request_id)
+);
+CREATE TABLE public.review (
+  review_reviewer_id integer NOT NULL,
+  review_reviewed_id integer NOT NULL,
+  review_value integer NOT NULL,
+  review_description character varying,
+  review_id integer NOT NULL DEFAULT nextval('review_review_id_seq'::regclass),
+  review_date timestamp without time zone NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT review_pkey PRIMARY KEY (review_id),
+  CONSTRAINT review_review_reviewer_id_fkey FOREIGN KEY (review_reviewer_id) REFERENCES public.user(user_id),
+  CONSTRAINT review_review_reviewed_id_fkey FOREIGN KEY (review_reviewed_id) REFERENCES public.user(user_id)
+);
+CREATE TABLE public.service (
+  service_type character varying NOT NULL,
+  service_description character varying,
+  service_location character varying,
+  service_price real NOT NULL CHECK (service_price >= 0::double precision),
+  service_client integer,
+  service_provider integer,
+  service_id integer NOT NULL DEFAULT nextval('service_service_id_seq'::regclass),
+  service_deadline timestamp without time zone,
+  service_title text,
+  service_status text,
+  CONSTRAINT service_pkey PRIMARY KEY (service_id),
+  CONSTRAINT service_service_provider_fkey FOREIGN KEY (service_provider) REFERENCES public.user(user_id),
+  CONSTRAINT service_service_client_fkey FOREIGN KEY (service_client) REFERENCES public.user(user_id)
+);
+CREATE TABLE public.service_request (
+  service_title text,
+  requested_provider integer,
+  service_type text NOT NULL,
+  service_description text,
+  service_location text,
+  service_price numeric,
+  requester integer NOT NULL,
+  request_id integer NOT NULL DEFAULT nextval('service_request_request_id_seq'::regclass),
+  request_status text DEFAULT 'pending'::text CHECK (request_status = ANY (ARRAY['pending'::text, 'accepted'::text, 'denied'::text, 'cancelled'::text])),
+  service_deadline timestamp without time zone,
+  CONSTRAINT service_request_pkey PRIMARY KEY (request_id),
+  CONSTRAINT service_request_requester_fkey FOREIGN KEY (requester) REFERENCES public.user(user_id)
+);
+CREATE TABLE public.user (
+  user_username character varying NOT NULL UNIQUE,
+  user_password character varying NOT NULL,
+  user_location text,
+  user_name character varying NOT NULL,
+  user_id integer NOT NULL DEFAULT nextval('user_user_id_seq'::regclass),
+  user_rating real CHECK (user_rating >= 0::double precision AND user_rating <= 5::double precision),
+  user_mail text UNIQUE,
+  CONSTRAINT user_pkey PRIMARY KEY (user_id)
+);

@@ -1,0 +1,1054 @@
+{
+	"info": {
+		"_postman_id": "f12e0b99-6fa5-40c3-a69a-f5bb299c2f1d",
+		"name": "QuickFixAPP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26612174",
+		"_collection_link": "https://lunar-desert-287967.postman.co/workspace/b17a55f1-643f-4065-889c-2cac41d3bcb2/collection/26612174-f12e0b99-6fa5-40c3-a69a-f5bb299c2f1d?action=share&source=collection_link&creator=26612174"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Get All Users",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "quickfix-api.vercel.app/users",
+							"host": [
+								"quickfix-api",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"users"
+							]
+						},
+						"description": "Gets all the active users on the app - Test only, its not used on the app itself"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Current User",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Nn0.1rtlh3mIuITEfkzh3pfB5XWPYenoijxZhZCqZanQjgU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "quickfix-api.vercel.app/user/me",
+							"host": [
+								"quickfix-api",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"user",
+								"me"
+							]
+						},
+						"description": "Gets current's user information including his professional profile, if existent"
+					},
+					"response": []
+				},
+				{
+					"name": "Get User By ID",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZXhwIjoxNzQ0MTIyOTA2fQ.uKmTdBobmrCBiGMX3abT8qP4beXd3PvNKBSzd9PP_fQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "quickfix-api.vercel.app/user/<id>",
+							"host": [
+								"quickfix-api",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"user",
+								"<id>"
+							]
+						},
+						"description": "Gets an user's information through his ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"username\",\r\n  \"password\": \"password\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "quickfix-api.vercel.app/login",
+							"host": [
+								"quickfix-api",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"login"
+							]
+						},
+						"description": "Verifies an user's credentials and returns the autentication token and his user ID to be used on the system endpoints."
+					},
+					"response": []
+				},
+				{
+					"name": "Add User",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"new_user\",\r\n  \"password\": \"newUserPassword123\",\r\n  \"name\": \"New User\",\r\n  \"mail\": \"new_user@example.com\",\r\n  \"location\": \"new user location address, city, country\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "quickfix-api.vercel.app/user",
+							"host": [
+								"quickfix-api",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"user"
+							]
+						},
+						"description": "Adds an user to the database"
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Nn0.1rtlh3mIuITEfkzh3pfB5XWPYenoijxZhZCqZanQjgU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"new_username_updated\",\r\n  \"password\": \"newUserPassword123_updated\",\r\n  \"name\": \"New User Updated Name\",\r\n  \"mail\": \"new_user_updated@example.com\",\r\n  \"location\": \"new user location address updated, city, country\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "quickfix-api.vercel.app/user",
+							"host": [
+								"quickfix-api",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"user"
+							]
+						},
+						"description": "Updates user information. Only the fields that are sent will be updated"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Nn0.1rtlh3mIuITEfkzh3pfB5XWPYenoijxZhZCqZanQjgU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "quickfix-api.vercel.app/user",
+							"host": [
+								"quickfix-api",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"user"
+							]
+						},
+						"description": "Removes an user's account information."
+					},
+					"response": []
+				}
+			],
+			"description": "An user can be just a client or a service provider."
+		},
+		{
+			"name": "Service Provider",
+			"item": [
+				{
+					"name": "Get All Providers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Nn0.1rtlh3mIuITEfkzh3pfB5XWPYenoijxZhZCqZanQjgU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://quickfix-api.vercel.app/providers?serviceType=\"service type or empty\"&maxBudget=[max budget value in €]&query=\"search query or empty\"&distanceKm=[max distance in KMs]",
+							"protocol": "https",
+							"host": [
+								"quickfix-api",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"providers"
+							],
+							"query": [
+								{
+									"key": "serviceType",
+									"value": "\"service type or empty\""
+								},
+								{
+									"key": "maxBudget",
+									"value": "[max budget value in €]"
+								},
+								{
+									"key": "query",
+									"value": "\"search query or empty\""
+								},
+								{
+									"key": "distanceKm",
+									"value": "[max distance in KMs]"
+								}
+							]
+						},
+						"description": "Gets all providers, with possible filtering:\n\n- type - Type of service the provider is professional in. - To not use send empty string\n    \n- maxBudget - Maximum budget for the provider's hourly rate - To not use send a big value\n    \n- Query - Any query that will use description, location or provider's name - To not use send empty string\n    \n- distanceKm - Maximum distance in KMs - To not use send a big value"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Provider",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Nn0.1rtlh3mIuITEfkzh3pfB5XWPYenoijxZhZCqZanQjgU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://quickfix-api.vercel.app/providers/details/[provider id]?role=[provider's role]",
+							"protocol": "https",
+							"host": [
+								"quickfix-api",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"providers",
+								"details",
+								"[provider id]"
+							],
+							"query": [
+								{
+									"key": "role",
+									"value": "[provider's role]"
+								}
+							]
+						},
+						"description": "Gets all provider's info through his ID and specified role"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Provider Roles",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Nn0.1rtlh3mIuITEfkzh3pfB5XWPYenoijxZhZCqZanQjgU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://quickfix-api.vercel.app/provider/roles",
+							"protocol": "https",
+							"host": [
+								"quickfix-api",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"provider",
+								"roles"
+							]
+						},
+						"description": "Gets all the user's provider roles"
+					},
+					"response": []
+				},
+				{
+					"name": "Add Providers Role",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZXhwIjoxNzQzNTQ2MjE2fQ.-HIrM_iSFrPPyE5f7kFYZTon9HUwF_xkYXsO62YqGbc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"role\": \"mechanic\",\r\n  \"location\": \"Coimbra\",\r\n  \"description\": \"Expert in VAG systems\",\r\n  \"pricePerHour\": 20\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://quickfix-api.vercel.app/provider",
+							"protocol": "https",
+							"host": [
+								"quickfix-api",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"provider"
+							]
+						},
+						"description": "Adds a role to the user's professional profile"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Providers Role",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZXhwIjoxNzQzMjU3ODM5fQ.GQES_wEIV_cV4uyN6lncVfdkXhIDb0RYI6RgTEdBtMU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"role\": \"electrician\",\r\n  \"pro_location\": \"Porto\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://quickfix-api.vercel.app/provider",
+							"protocol": "https",
+							"host": [
+								"quickfix-api",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"provider"
+							]
+						},
+						"description": "Updates/Edits the sent fields regarding a role's information"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete provider Role",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Nn0.1rtlh3mIuITEfkzh3pfB5XWPYenoijxZhZCqZanQjgU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "quickfix-api.vercel.app/provider?role=[role to remove]",
+							"host": [
+								"quickfix-api",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"provider"
+							],
+							"query": [
+								{
+									"key": "role",
+									"value": "[role to remove]"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Service provider is any user with professional roles assigned to his account"
+		},
+		{
+			"name": "Requests",
+			"item": [
+				{
+					"name": "Get Requests",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Nn0.1rtlh3mIuITEfkzh3pfB5XWPYenoijxZhZCqZanQjgU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://quickfix-api.vercel.app/requests?serviceType=[service type]&minBudget=[minimum value in €]&query=[query to search for]&distanceKm=[maximum value in Kms]",
+							"protocol": "https",
+							"host": [
+								"quickfix-api",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"requests"
+							],
+							"query": [
+								{
+									"key": "serviceType",
+									"value": "[service type]"
+								},
+								{
+									"key": "minBudget",
+									"value": "[minimum value in €]"
+								},
+								{
+									"key": "query",
+									"value": "[query to search for]"
+								},
+								{
+									"key": "distanceKm",
+									"value": "[maximum value in Kms]"
+								}
+							]
+						},
+						"description": "Gets all requests, with possible filtering:\n\n- type - Type of services to display - To not use send empty string\n    \n- minBudget - Minimum budgetvalue for the request - To not use send 0\n    \n- Query - Any query that will use description, location or service title - To not use send empty string\n    \n- distanceKm - Maximum distance in KMs - To not use send a big value"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Client's Requests",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZXhwIjoxNzQzNTQ0ODY0fQ.4d4TIO1wvYNdD8I3k7Jx4j11bCoTIk_ZKd_9mDqQ8XI",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://quickfix-api.vercel.app/requests/client?status=",
+							"protocol": "https",
+							"host": [
+								"quickfix-api",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"requests",
+								"client"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": ""
+								}
+							]
+						},
+						"description": "Gets all the current's user created requests. Can filter by request status"
+					},
+					"response": []
+				},
+				{
+					"name": "Get SP's pending requests",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZXhwIjoxNzQ0MjA2NjU0fQ.SjGhNY2PWKgIy2FNHsrGfjy1oaxrxK2JHLdBkpbJofg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://quickfix-api.vercel.app/requests/provider",
+							"protocol": "https",
+							"host": [
+								"quickfix-api",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"requests",
+								"provider"
+							]
+						},
+						"description": "Gets the services that the current user is providing clients with"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Request By ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Nn0.1rtlh3mIuITEfkzh3pfB5XWPYenoijxZhZCqZanQjgU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://quickfix-api.vercel.app/request/[request ID]",
+							"protocol": "https",
+							"host": [
+								"quickfix-api",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"request",
+								"[request ID]"
+							]
+						},
+						"description": "Gets a request's info by its ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Check Request ownership",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Nn0.1rtlh3mIuITEfkzh3pfB5XWPYenoijxZhZCqZanQjgU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://quickfix-api.vercel.app/request/check-ownership/[request ID]",
+							"protocol": "https",
+							"host": [
+								"quickfix-api",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"request",
+								"check-ownership",
+								"[request ID]"
+							]
+						},
+						"description": "Checks if the current user created the specified request"
+					},
+					"response": []
+				},
+				{
+					"name": "Add Request",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZXhwIjoxNzQzNTQ2MjE2fQ.-HIrM_iSFrPPyE5f7kFYZTon9HUwF_xkYXsO62YqGbc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Service request title\",\r\n  \"type\": \"Request's service type\",\r\n  \"description\": \"Service request description\",\r\n  \"location\": \"Service request address, city, country OR city, country\",\r\n  \"price\": total for the request in €,\r\n  \"deadline\": \"aaaa-mm-ddThh:mm:ss\"\r\n\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "quickfix-api.vercel.app/request",
+							"host": [
+								"quickfix-api",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"request"
+							]
+						},
+						"description": "Adds a service request"
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Request",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Nn0.1rtlh3mIuITEfkzh3pfB5XWPYenoijxZhZCqZanQjgU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://quickfix-api.vercel.app/request/63",
+							"protocol": "https",
+							"host": [
+								"quickfix-api",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"request",
+								"63"
+							]
+						},
+						"description": "Removes a service request"
+					},
+					"response": []
+				},
+				{
+					"name": "Handle Request",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiZXhwIjoxNzQzNTQ5NDE1fQ.0CukzvhqryFCRLZU_UYuv3rpd6TGMMhx1sGelhrP0-0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"requestId\": 2,\r\n  \"accept\": true\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "quickfix-api.vercel.app/request/decision",
+							"host": [
+								"quickfix-api",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"request",
+								"decision"
+							]
+						},
+						"description": "Allows the current user to accept or deny a service request"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Request",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Nn0.1rtlh3mIuITEfkzh3pfB5XWPYenoijxZhZCqZanQjgU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"user_name\": \"First User name\" \r\n\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://quickfix-api.vercel.app/request/63",
+							"protocol": "https",
+							"host": [
+								"quickfix-api",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"request",
+								"63"
+							]
+						},
+						"description": "Updates the sent fields of a service request"
+					},
+					"response": []
+				}
+			],
+			"description": "Requests can be created by any user and will be acceptable by any provider with a role assigned equivalent to the created request's service type"
+		},
+		{
+			"name": "Services",
+			"item": [
+				{
+					"name": "Get Services for a provider",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZXhwIjoxNzQ0NDkwOTQ4fQ.L58-ANs_Ma1LRvPjLINTUYhNPmfJnYlHBdp5dOHCSJs",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://quickfix-api.vercel.app/services/provider/<provider_id>",
+							"protocol": "https",
+							"host": [
+								"quickfix-api",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"services",
+								"provider",
+								"<provider_id>"
+							]
+						},
+						"description": "Gets the services the provider already accepted and is working on"
+					},
+					"response": []
+				},
+				{
+					"name": "Get all Services",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZXhwIjoxNzQ0NDkwOTQ4fQ.L58-ANs_Ma1LRvPjLINTUYhNPmfJnYlHBdp5dOHCSJs",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://quickfix-api.vercel.app/services?serviceType=\"service's type\"&maxBudget=[maxBudget in €]&query=\"query to search for\"&status=\"service status\"",
+							"protocol": "https",
+							"host": [
+								"quickfix-api",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"services"
+							],
+							"query": [
+								{
+									"key": "serviceType",
+									"value": "\"service's type\"",
+									"description": "empty if not to be used"
+								},
+								{
+									"key": "maxBudget",
+									"value": "[maxBudget in €]",
+									"description": "Maximum price allowed for the service"
+								},
+								{
+									"key": "query",
+									"value": "\"query to search for\"",
+									"description": "Search inside description, location or title"
+								},
+								{
+									"key": "status",
+									"value": "\"service status\"",
+									"description": "Service status (accepted, started, etc.)"
+								}
+							]
+						},
+						"description": "Gets the services the provider already accepted and is working on"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Service By ID",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Nn0.1rtlh3mIuITEfkzh3pfB5XWPYenoijxZhZCqZanQjgU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://quickfix-api.vercel.app/service/[service ID]",
+							"protocol": "https",
+							"host": [
+								"quickfix-api",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"service",
+								"[service ID]"
+							]
+						},
+						"description": "Gets a service information through its ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Get all Service's types",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZXhwIjoxNzQ0NDkwOTQ4fQ.L58-ANs_Ma1LRvPjLINTUYhNPmfJnYlHBdp5dOHCSJs",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://quickfix-api.vercel.app/serviceTypes",
+							"protocol": "https",
+							"host": [
+								"quickfix-api",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"serviceTypes"
+							]
+						},
+						"description": "Gets all the current service's types in the app"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Service Status",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"serviceId\": service_id,\r\n  \"status\": \"current status\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "quickfix-api.vercel.app/service/status",
+							"host": [
+								"quickfix-api",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"service",
+								"status"
+							]
+						},
+						"description": "Updates a service's status through its ID"
+					},
+					"response": []
+				}
+			],
+			"description": "Services are the requests that were accepted by a service provider"
+		},
+		{
+			"name": "Profile Picture",
+			"item": [
+				{
+					"name": "Upload profile picture",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Nn0.1rtlh3mIuITEfkzh3pfB5XWPYenoijxZhZCqZanQjgU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/gabri/Desktop/Projeto/QuickFixAppFiles/ProfilePics/profilePicExample.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "quickfix-api.vercel.app/profilePicture",
+							"host": [
+								"quickfix-api",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"profilePicture"
+							]
+						},
+						"description": "Uploads a profile picture by selecting a file."
+					},
+					"response": []
+				},
+				{
+					"name": "Get profile picture by user ID",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiZXhwIjoxNzQ0MTIyOTA2fQ.uKmTdBobmrCBiGMX3abT8qP4beXd3PvNKBSzd9PP_fQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "quickfix-api.vercel.app/profilePicture/<id>",
+							"host": [
+								"quickfix-api",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"profilePicture",
+								"<id>"
+							]
+						},
+						"description": "Gets an user's profile picture's reference"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

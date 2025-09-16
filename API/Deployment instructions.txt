@@ -1,0 +1,18 @@
+1 - Create the database in Supabase
+2 - Get the project URL in Settings > API > Project URL
+3 - Add this URL to Vercel as the SUPABASE_URL environment variable
+4 - Get the anon public key in Settings > API > Project API Keys
+5 - Add this key to Vercel as the SUPABASE_KEY environment variable
+6 - Generate a SECRET_KEY to sign JWT tokens
+7 - Add this SECRET_KEY to Vercel as the SECRET_KEY environment variable
+8 - Use the requests library in Flask to make REST calls to SUPABASE_URL/rest/v1/<table>
+9 - Ensure that permissions (RLS) in Supabase allow public read/write access or configure them as necessary
+    (This is already the default setting)
+10 - Create the requirements.txt file with:
+                        Flask==2.3.2
+                        psycopg2-binary==2.9.9
+                        PyJWT==2.8.0
+                        flask
+                        requests
+                        pyjwt
+
